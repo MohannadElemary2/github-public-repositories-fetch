@@ -36,4 +36,5 @@ We can sync the data from github everyday using a cron job. Everyday we fetch al
 - Create new database for the project.
 - Enter your database conenction and name in the .env file.
 - Run `php artisan migrate`.
+- Run `php artisan serv`.
 - Open Postman and try the APIs.
