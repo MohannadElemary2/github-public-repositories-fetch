@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Repositories\RepositoriesRepository;
 use App\Services\BaseService;
 use App\Transformers\RepositoriesResource;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Http;
 
 class RepositoriesService extends BaseService
@@ -19,9 +20,28 @@ class RepositoriesService extends BaseService
         $url = $this->buildAPIUrl($data);
 
         $response = Http::get($url)->json()['items'];
-        // dd($response);
 
         return RepositoriesResource::collection($response);
+    }
+
+    public function sync($data)
+    {
+        $url = config('app.github_url');
+
+        $url = $this->addParamToUrl($url, 'pushed', $data, '', true, true);
+
+        $url = $this->addParamToUrl($url, 'per_page', $data);
+        $url = $this->addParamToUrl($url, 'page', $data);
+
+        $response = Http::get($url);
+
+        if ($response->status() == Response::HTTP_UNPROCESSABLE_ENTITY) {
+            return false;
+        }
+
+        $this->repository->insert($response->json()['items'] ?? []);
+
+        return true;
     }
 
     public function buildAPIUrl($data)

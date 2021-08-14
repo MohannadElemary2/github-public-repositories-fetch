@@ -16,7 +16,7 @@ class RepositoriesResource extends JsonResource
             'full_name' => $data['full_name'],
             'owner_name' => $data['owner']['login'],
             'owner_image' => $data['owner']['avatar_url'],
-            'starts' => $data['stargazers_count'],
+            'stars' => $data['stargazers_count'],
         ];
     }
 }

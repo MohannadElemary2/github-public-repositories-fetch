@@ -6,8 +6,13 @@ use App\Filters\Filter;
 
 class RepositoriesFilter extends Filter
 {
-    public function group($value = null)
+    public function created($value = null)
     {
-        return $this->builder->where('group', '=', $value);
+        return $this->builder->where('created', '>=', $value);
+    }
+
+    public function language($value = null)
+    {
+        return $this->builder->where('language', $value);
     }
 }
