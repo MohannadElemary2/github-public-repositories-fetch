@@ -19,6 +19,13 @@ class RepositoriesRepository extends BaseRepository
         return $this->resource::collection($this->getModelData(app(RepositoriesFilter::class)));
     }
 
+    /**
+     * Insert Multiple Repositories Data To Database
+     *
+     * @param array $data
+     * @return void
+     * @author Mohannad Elemary
+     */
     public function insert($data)
     {
         $insertedData = [];

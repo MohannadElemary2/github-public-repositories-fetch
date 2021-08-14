@@ -16,11 +16,25 @@ class RepositoriesController extends BaseController
         parent::__construct($service);
     }
 
+    /**
+     * Get Repositories Directly By Calling Github API
+     *
+     * @param ListRepositoriesRequest $request
+     * @return JsonResource
+     * @author Mohannad Elemary
+     */
     public function getDirectly(ListRepositoriesRequest $request)
     {
         return $this->service->getDirectly($request->all());
     }
 
+    /**
+     * Get Repositories From Our Database After Syncing Data From Github Web Service
+     *
+     * @param ListRepositoriesRequest $request
+     * @return JsonResource
+     * @author Mohannad Elemary
+     */
     public function index()
     {
         resolve(ListRepositoriesRequest::class);

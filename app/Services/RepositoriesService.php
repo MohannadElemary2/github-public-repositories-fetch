@@ -15,6 +15,13 @@ class RepositoriesService extends BaseService
         parent::__construct($repository);
     }
 
+    /**
+     * Get Repositories Directly By Calling Github API
+     *
+     * @param array $data
+     * @return JsonResource
+     * @author Mohannad Elemary
+     */
     public function getDirectly($data)
     {
         $url = $this->buildAPIUrl($data);
@@ -24,6 +31,13 @@ class RepositoriesService extends BaseService
         return RepositoriesResource::collection($response);
     }
 
+    /**
+     * Sync Repositories Data From Github API
+     *
+     * @param array $data
+     * @return bool
+     * @author Mohannad Elemary
+     */
     public function sync($data)
     {
         $url = config('app.github_url');
@@ -44,6 +58,13 @@ class RepositoriesService extends BaseService
         return true;
     }
 
+    /**
+     * Build API Endpoint To Be Requested With The Right Parameters
+     *
+     * @param array $data
+     * @return string
+     * @author Mohannad Elemary
+     */
     public function buildAPIUrl($data)
     {
         $url = config('app.github_url');
@@ -63,6 +84,18 @@ class RepositoriesService extends BaseService
         return $url;
     }
 
+    /**
+     * Add Parameter To URL To Be Built
+     *
+     * @param string $url
+     * @param string $parameterName
+     * @param array $parameters
+     * @param string $operator
+     * @param boolean $inQuery
+     * @param boolean $isFirstParam
+     * @return string
+     * @author Mohannad Elemary
+     */
     private function addParamToUrl(
         $url,
         $parameterName,
