@@ -6,7 +6,7 @@ use App\Services\RepositoriesService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 
-class AutoSyncingFromSalesChannels extends Command
+class SyncNewRepositories extends Command
 {
 
     /**

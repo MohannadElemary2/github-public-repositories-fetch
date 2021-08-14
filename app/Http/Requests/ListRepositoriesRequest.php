@@ -18,7 +18,7 @@ class ListRepositoriesRequest extends BaseRequest
     public function rules()
     {
         return [
-            'per_page' => ['nullable', 'in:1,10,50,100'],
+            'per_page' => ['nullable', 'in:10,50,100'],
             'created'  => ['required', 'date', 'date_format:Y-m-d'],
             'language' => ['nullable'],
             'page' => ['nullable', 'numeric'],
