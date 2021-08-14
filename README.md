@@ -29,3 +29,11 @@ We can sync the data from github everyday using a cron job. Everyday we fetch al
 - We will not get today's updates untill the next day.
 - To many operations in the cron job.
 - A lot of data stored in database that means a lot of resources needed.
+
+## How To Use / Setup
+- Clone repo to your device.
+- Run `composer install` in the project.
+- Create new database for the project.
+- Enter your database conenction and name in the .env file.
+- Run `php artisan migrate`.
+- Open Postman and try the APIs.
